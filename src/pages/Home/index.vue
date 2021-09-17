@@ -1,6 +1,7 @@
 <template lang="pug">
-.home-list.fn-flex.flex-column.pos-f
+.home-list
 	p-logo(title="PDF", sub-title="PDF转图片" @on-click="handleClick('/pdf')")
+	p-logo(title="dorring", sub-title="拖拽组件" @on-click="handleOpen('https://dorring.shenzhepei.com')")
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -17,17 +18,22 @@ export default defineComponent({
 		const handleClick = url => {
 			router.push(url)
 		}
+		const handleOpen = url => {
+			window.open(url)
+		}
 		return {
 			handleClick,
+			handleOpen,
 		}
 	},
 })
 </script>
 <style lang="scss" scoped>
 .home-list {
-	min-width: 250px;
-	align-items: center;
-	padding: 10px;
-	min-height: 100vh;
+	padding: 30px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	grid-gap: 24px;
 }
 </style>
