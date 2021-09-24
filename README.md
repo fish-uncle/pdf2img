@@ -1,5 +1,6 @@
 ﻿## pdf2img
 
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fish-uncle/pdf2img.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fish-uncle/pdf2img/context:javascript)
 <a href="https://app.travis-ci.com/github/fish-uncle/pdf2img">
 <img src="https://app.travis-ci.com/fish-uncle/pdf2img.svg?branch=master&status=created">
 </a>
