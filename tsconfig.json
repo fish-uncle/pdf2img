@@ -21,10 +21,8 @@
 		"noImplicitAny": false, // 在表达式和声明上有隐含的 any类型时报错
 		"noImplicitThis": false, // 在"this"表达式上有隐含的 any类型时报错
 		"pretty": true, // 给错误和消息设置样式，使用颜色和上下文。
-		"types": ["webpack-env"],
-		"paths": {
-			"@dorring/sdk/*": ["packages/*"]
-		},
+		"types": ["webpack-env", "jest"],
+		"paths": {},
 		"lib": ["esnext", "dom", "dom.iterable", "scripthost"]
 	},
 	"include": ["typings/vue-shim.d.ts", "typings/global.d.ts", "src/**/*.ts", "src/**/*.vue"],
