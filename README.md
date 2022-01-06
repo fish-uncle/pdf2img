@@ -11,7 +11,7 @@
 使用JS将PDF文档转换为图片，并支持下载图片（.zip格式全部下载）
 
 ## 示例
-[Demo](https://pdf2img.shenzhepei.com)
+[Demo](https://fish-uncle.github.io/pdf2img-doc/#/)
 
 ## 操作流程
 * 操作步骤(选择文件-->文档上传完成-->导出图片)
