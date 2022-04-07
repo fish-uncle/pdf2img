@@ -1,6 +1,6 @@
 <template lang="pug">
-.p-left-logo-box(@click="handleClick")
-	.p-left-logo.pos-r.fn-flex.cursor-pointer(:class="{active}" ) {{title}}
+.p-left-logo-box.fn-flex.flex-column(@click="handleClick")
+	.p-left-logo.pos-r.fn-flex.cursor-pointer(:class="{active,loading}" ) {{title}}
 	.p-left-logo-text.cursor-pointer {{subTitle}}
 </template>
 <script lang="ts">
@@ -8,6 +8,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
 	name: 'p-logo',
 	props: {
+		loading: {
+			type: Boolean,
+			default: false,
+		},
 		title: {
 			type: String,
 		},
@@ -30,6 +34,10 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
+.p-left-logo-box {
+	justify-content: center;
+	align-items: center;
+}
 @keyframes rotate {
 	0% {
 		transform: rotate(0deg);
@@ -87,7 +95,7 @@ export default defineComponent({
 			animation: infinite rotate 3s;
 		}
 	}
-	&.active {
+	&.loading {
 		&:before {
 			border-color: #a0816a #a0816a #a0816a transparent;
 			animation: infinite rotate 4s;
@@ -96,6 +104,11 @@ export default defineComponent({
 			border-color: #a0816a transparent #a0816a #a0816a;
 			animation: infinite rotate 3s;
 		}
+	}
+	&.active {
+		background: #786450;
+		border-radius: 50%;
+		color: #fff;
 	}
 }
 </style>

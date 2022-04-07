@@ -1,5 +1,5 @@
 export default {
-	path: '/pdf',
-	name: 'Pdf',
+	path: '/pdf2img',
+	name: 'Pdf2img',
 	component: () => import('./index.vue'),
 }

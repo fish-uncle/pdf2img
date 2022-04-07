@@ -3,11 +3,10 @@ import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 
 export default class Pdf extends Factory<Pdf> {
-	version = process.env.version
 	fileName = '' // 文件名
 	fileSize = 0 // 文件大小
 	pageNum = 0 // 页数
-	list: Array<string> = []
+	list: Array<any> = []
 	pdf: any = null
 	loading = false // 加载状态
 	error = false // 报错状态
@@ -19,11 +18,11 @@ export default class Pdf extends Factory<Pdf> {
 	}
 
 	dataURLtoBlob(url) {
-		let arr = url.split(','),
+		const arr = url.split(','),
 			mime = arr[0].match(/:(.*?);/)[1],
-			bStr = atob(arr[1]),
-			n = bStr.length,
-			u8arr = new Uint8Array(n)
+			bStr = atob(arr[1])
+		let n = bStr.length
+		const u8arr = new Uint8Array(n)
 		while (n--) {
 			u8arr[n] = bStr.charCodeAt(n)
 		}
@@ -36,10 +35,10 @@ export default class Pdf extends Factory<Pdf> {
 		this.loading = true
 		if (this.list.length <= 0) return
 		const zip = new JSZip()
-		const name = `pdf2img-${+new Date()}`
-		const images = zip.folder(name)
+		const name = `${+new Date()}`
+		const images: any = zip.folder(name)
 		this.list.forEach((item, index) => {
-			images.file('pdf2img-' + (index + 1) + '.png', this.dataURLtoBlob(item), {
+			images.file(index + 1 + '.png', this.dataURLtoBlob(item), {
 				base64: true,
 			})
 		})
@@ -63,7 +62,11 @@ export default class Pdf extends Factory<Pdf> {
 				viewport: viewport,
 			}
 			page.render(renderContext).then(() => {
-				this.list[pageNum - 1] = canvas.toDataURL('image/png', 1)
+				this.list[pageNum - 1] = {
+					img: canvas.toDataURL('image/png', 1),
+					width: viewport.width,
+					height: viewport.height,
+				}
 			})
 		})
 	}
@@ -73,24 +76,24 @@ export default class Pdf extends Factory<Pdf> {
 		this.loading = true
 		const file = e.target.files[0]
 		this.fileSize = Number((file.size / 1048576).toFixed(2))
+		console.log(file)
 		this.fileName = file.name
-		const _self = this
 		const reader = new FileReader()
 		reader.readAsArrayBuffer(file)
-		reader.onload = function () {
-			const result = new Uint8Array((this as any).result)
+		reader.onload = () => {
+			const result = new Uint8Array((reader as any).result)
 			window.PDFJS.cMapUrl = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.288/cmaps/'
 			window.PDFJS.cMapPacked = true
 			window.PDFJS.getDocument(result).then(pdf => {
 				if (pdf) {
-					_self.pdf = pdf
-					_self.pageNum = pdf.numPages
-					_self.loadEnd()
-					for (let i = 1; i <= _self.pageNum; i++) {
-						_self.draw(pdf, i)
+					this.pdf = pdf
+					this.pageNum = pdf.numPages
+					this.loadEnd()
+					for (let i = 1; i <= this.pageNum; i++) {
+						this.draw(pdf, i)
 					}
 				} else {
-					_self.loadError()
+					this.loadError()
 				}
 			})
 		}

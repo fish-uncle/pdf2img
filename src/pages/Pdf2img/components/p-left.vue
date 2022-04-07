@@ -1,6 +1,5 @@
 <template lang="pug">
-.p-left.fn-flex.flex-column.pos-f
-	p-logo(:active="pdf.loading" title="PDF" sub-title="PDF转图片" @on-click="handleClick('/')")
+.p-left.fn-flex.flex-column
 	.fn-flex.flex-row
 		p-button(for="pdf" label="选择文件" :disabled="pdf.loading")
 			input.fn-hide#pdf(type="file", accept="application/pdf" @change="importPdf")
@@ -12,10 +11,10 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
-import pText from '../../components-style/p-text/index.vue'
-import pLogo from '../../components-style/p-logo/index.vue'
-import pButton from '../../components-style/p-button/index.vue'
-import Pdf from '../../core/Pdf'
+import pText from '../../../components-style/p-text/index.vue'
+import pLogo from '../../../components-style/p-logo/index.vue'
+import pButton from '../../../components-style/p-button/index.vue'
+import Pdf from '../../../core/Pdf'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -56,10 +55,9 @@ export default defineComponent({
 	width: 250px;
 	align-items: center;
 	padding: 10px;
-	min-height: 100vh;
-	border-right: 1px solid #c2c2c2;
 }
 .p-left-tip {
 	margin-top: 20px;
+	width: 100%;
 }
 </style>

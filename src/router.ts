@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw, Router } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = []
-const context = require.context('./pages', true, /\.(route.ts)$/)
+const files = import.meta.globEager('./pages/**/*.route.ts')
 
-context.keys().forEach(name => {
-	routes.push(context(name).default)
-})
+for (const key in files) {
+	routes.push(files[key].default)
+}
 
 const router: Router = createRouter({
 	history: createWebHashHistory(),

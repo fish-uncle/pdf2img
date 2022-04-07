@@ -1,5 +1,5 @@
 <template lang="pug">
-label.p-button.fn-flex.cursor-pointer.circle(v-bind="$props" :class="{disabled:disabled}" @click="handleClick") {{label}}
+label.p-button.fn-flex.cursor-pointer.circle(v-bind="$props" :class="{disabled:disabled}" @click="handleClick" ) {{label}}
 slot
 </template>
 <script lang="ts">
@@ -42,7 +42,7 @@ export default defineComponent({
 	line-height: 30px;
 	padding: 0 10px;
 	margin-right: 10px;
-	
+
 	&:last-child {
 		margin-right: 0;
 	}
