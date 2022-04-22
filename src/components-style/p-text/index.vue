@@ -12,7 +12,7 @@ export default defineComponent({
 			type: String,
 		},
 		value: {
-			type: [String, Number],
+			type: String,
 		},
 	},
 })

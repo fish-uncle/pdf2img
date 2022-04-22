@@ -1,9 +1,10 @@
 <template lang="pug">
-label.p-button.fn-flex.cursor-pointer.circle(v-bind="$props" :class="{disabled:disabled}" @click="handleClick" ) {{label}}
+label.p-button.fn-flex.cursor-pointer.circle(:for="$props.for" :label="$props.label" :class="{disabled:disabled}" @click="handleClick" ) {{label}}
 slot
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 export default defineComponent({
 	name: 'p-text',
 	props: {

@@ -1,10 +1,6 @@
 <template lang="pug">
 .p-nav.pos-f
-	p-logo(:loading="pdf.loading" title="pdf2img", sub-title="PDF转图片" @on-click="handleClick('/pdf2img')" :active="active==='/pdf2img'")
-	//p-logo(title="img2base64", sub-title="图片转base64" @on-click="handleClick('/img2base64')" :active="active==='/img2base64'")
-	//p-logo(title="url2code", sub-title="文本转二维码" @on-click="handleClick('/url2code')" :active="active==='/url2code'")
-	//p-logo(title="code2url", sub-title="二维码转文本" @on-click="handleClick('/code2url')" :active="active==='/code2url'")
-	//p-logo(title="dorring", sub-title="拖拽组件" @on-click="handleOpen('https://dorring.shenzhepei.com')")
+	p-logo(:loading="pdf.loading" title="pdf2img", sub-title="PDF转图片" @on-click="handleClick('/')" :active="active==='/'")
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, watch } from 'vue'
@@ -51,10 +47,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .p-nav {
 	padding: 10px 30px;
-	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-	grid-gap: 24px;
+	width: 250px;
 	background-color: #fff;
 }
 </style>

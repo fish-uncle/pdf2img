@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
 import legacy from '@vitejs/plugin-legacy'
-import eslintPlugin from 'vite-plugin-eslint'
 
 const resolve = (p: string) => path.resolve(__dirname, p)
 
@@ -15,12 +14,7 @@ export default ({ mode }) => {
 			legacy({
 				targets: ['ie >= 11'],
 				additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
-			}),
-			eslintPlugin({
-				include: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.vue'],
-				exclude: ['./node_modules/**'],
-				cache: false,
-			}),
+			})
 		],
 		build: {
 			rollupOptions: {
